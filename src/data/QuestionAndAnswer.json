@@ -1,0 +1,55 @@
+{
+    "Formulaire": [
+        {
+            "Question": "Sommeil dans les dernière 24h ?",
+            "Answer": [
+                "Bien dormi(>8h)",
+                "Moyen(6-8h)",
+                "Peu dormi(4-6h)",
+                "Trés peu dormi(<4h)"
+            ]
+        },
+        {
+            "Question": "Fatigue",
+            "Answer": [
+                "Aucune",
+                "Légère",
+                "Modérée",
+                "Importante"
+            ]
+        },
+        {
+            "Question": "Etat Psychologique",
+            "Answer": [
+                "Bien",
+                "Moyen",
+                "Mal"
+            ]
+        },
+        {
+            "Question": "Médicament, Alcool..",
+            "Answer": [
+                "Aucun",
+                "Médicament",
+                "Alcool",
+                "Médicament et Alcool"
+            ]
+        },
+        {
+            "Question": "Horaire d'activité",
+            "Answer": [
+                "8h-16h",
+                "16h-20h ou 6H00-8H00",
+                "avant 06H00 ou après 20H00"
+            ]
+        },
+        {
+            "Question": "Etat",
+            "Answer": [
+                "en bonne forme",
+                "Moyen forme ou infection légère",
+                "Etat fébrile"
+            ]
+        }
+    ]
+}
