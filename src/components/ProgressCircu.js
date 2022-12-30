@@ -2,6 +2,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import { useState } from 'react';
 import size from '../data/QuestionAndAnswer.json';
+import logo_stress from '../assets/logo_stress.png';
 
 let progress1 = 0;
 let progress2 = 0;
@@ -16,9 +17,9 @@ function ProgressCircu(QuestionAndAnswer) {
     let Answer = localStorage.getItem(QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question)
             if (QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question != null){
                 switch (QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question) {
-                    case "Sommeil dans les dernière 24h ?"
+                    case "Sommeil dans les dernières 24h ?"
                         :progress1 = Math.round((Answer /  size.Formulaire.length) * 100);
-                        console.log(progress1)
+                        console.log(Answer + "/ " + size.Formulaire[testa].Answer.length)
                         break;
                     case "Fatigue"
                         :progress2 = Math.round(((Answer) / size.Formulaire[testa].Answer.length) * 100);
@@ -44,45 +45,43 @@ function ProgressCircu(QuestionAndAnswer) {
                         break;
                 }
            }
-           console.log(testa);
     
     return (
         <body>
             <div style={{width: '80%'}}>
                 <contain style={styles.contain}>
             <CircularProgressbarWithChildren value={progress1} styles={styles.progress1}>
-                <img style={{ width: 40, marginTop: -5}} src="https://i.imgur.com/b9NyUGm.png" alt="doge" />
+               🛌
                 <div style={{ fontSize: 12, marginTop: -5 }}>
                     <strong>{progress1}%</strong> Sommeil
                 </div>
             </CircularProgressbarWithChildren>
             <CircularProgressbarWithChildren value={progress2} styles={styles.progress2}>
-                <img style={{ width: 40, marginTop: -5}} src="https://i.imgur.com/b9NyUGm.png" alt="doge" />
+                😴
                 <div style={{ fontSize: 12, marginTop: -5 }}>
                     <strong>{progress2}%</strong> Fatigue
                 </div>
             </CircularProgressbarWithChildren>
             <CircularProgressbarWithChildren value={progress3} styles={styles.progress3}>
-                <img style={{ width: 40, marginTop: -5}} src="https://i.imgur.com/b9NyUGm.png" alt="doge" />
+            <img style={{ width: 50, marginTop: -5}} src={logo_stress} alt="doge" />
                 <div style={{ fontSize: 12, marginTop: -5 }}>
                     <strong>{progress3}%</strong> Etat psycologique
                 </div>
             </CircularProgressbarWithChildren>
             <CircularProgressbarWithChildren value={progress4} styles={styles.progress4}>
-                <img style={{ width: 40, marginTop: -5}} src="https://i.imgur.com/b9NyUGm.png" alt="doge" />
+                💊
                 <div style={{ fontSize: 12, marginTop: -5 }}>
                     <strong>{progress4}%</strong> Medicament, Alcool..
                 </div>
             </CircularProgressbarWithChildren>
             <CircularProgressbarWithChildren value={progress5} styles={styles.progress5}>
-                <img style={{ width: 40, marginTop: -5}} src="https://i.imgur.com/b9NyUGm.png" alt="doge" />
+                🕦🧑‍💻
                 <div style={{ fontSize: 12, marginTop: -5 }}>
                     <strong>{progress5}%</strong> Horaire d'activité
                 </div>
             </CircularProgressbarWithChildren>
-             
-            <CircularProgressbarWithChildren value={progress6} styles={6}>
-                <img style={{ width: 40, marginTop: -5}} src="https://i.imgur.com/b9NyUGm.png" alt="doge" />
+            <CircularProgressbarWithChildren value={progress6} styles={styles.progress6}>
+                🤒
                 <div style={{ fontSize: 12, marginTop: -5 }}>
                     <strong>{progress6}%</strong> ETAT
                 </div>
@@ -99,6 +98,8 @@ function ProgressCircu(QuestionAndAnswer) {
     contain: {
         //metre tout les items en ligne
         display: 'flex',
+        //metre un espace entre les items
+        justifyContent: 'space',
     },
     //change color progressebar
     progress1: {
@@ -130,6 +131,8 @@ function ProgressCircu(QuestionAndAnswer) {
         background: {
             fill: '#3e98c7',
         },
+
+
     },
     progress3: {
         path: {

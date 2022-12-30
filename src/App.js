@@ -1,15 +1,17 @@
 import './App.css';
 import Question from './components/Question';
+import React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Notif from './components/Notif'
 
 function App() {
   return (
-    <body className="App-header">
-    <div style={styles.bodyQuestion}>
+    <div>
+      <Navbar />
+      <Notif />
       <Question></Question>
-    </div>
-    <div style={styles.process}>
-    </div>
-    </body>
+      </div>
   );
 }
 

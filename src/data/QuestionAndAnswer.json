@@ -1,12 +1,12 @@
 {
     "Formulaire": [
         {
-            "Question": "Sommeil dans les dernière 24h ?",
+            "Question": "Sommeil dans les dernières 24h ?",
             "Answer": [
-                "Bien dormi(>8h)",
-                "Moyen(6-8h)",
+                "Trés peu dormi(<4h)",
                 "Peu dormi(4-6h)",
-                "Trés peu dormi(<4h)"
+                "Moyen(6-8h)",
+                "Bien dormi(>8h)"
             ]
         },
         {
@@ -21,9 +21,10 @@
         {
             "Question": "Etat Psychologique",
             "Answer": [
-                "Bien",
+                "Mal",
                 "Moyen",
-                "Mal"
+                "Bien"
+
             ]
         },
         {
@@ -32,7 +33,7 @@
                 "Aucun",
                 "Médicament",
                 "Alcool",
-                "Médicament et Alcool"
+                "Drogue"
             ]
         },
         {
@@ -46,9 +47,9 @@
         {
             "Question": "Etat",
             "Answer": [
-                "en bonne forme",
+                "Etat fébrile",
                 "Moyen forme ou infection légère",
-                "Etat fébrile"
+                "en bonne forme"
             ]
         }
     ]
