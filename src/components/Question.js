@@ -2,6 +2,9 @@ import { useState } from 'react';
 import QuestionAndAnswer from '../data/QuestionAndAnswer.json';
 import ButtonAnswer from './ButtonAnswer';
 import ProgressCircu from './ProgressCircu';
+import App from './rating_meter';
+
+const xMax = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
 function Question() {
   //increment the count to display the next question
@@ -10,8 +13,9 @@ function Question() {
   function handleSubmit(e) {
     e.preventDefault();
     if (count < QuestionAndAnswer.Formulaire.length){
-      localStorage.setItem("count",count == null ? 0: count)
+      localStorage.setItem("count",count == null ? 0 : count)
       setCount(count + 1);
+      console.log("count",count)
     }
   }
   if (count < QuestionAndAnswer.Formulaire.length){
@@ -39,7 +43,10 @@ function Question() {
   {
     return(
       <div className="App-header" >
-        <body className='App-body' style={styles.bodyQuestion}>     
+                <div style={styles.ratingmeter}>
+        <App></App>
+        </div>
+        <body className='App-body' style={styles.bodyQuestion}> 
           <ProgressCircu QuestionAndAnswer={QuestionAndAnswer}></ProgressCircu>      
         </body>
       </div>
@@ -49,13 +56,21 @@ function Question() {
 
 export default Question;
 const styles = {
-    bodyQuestion: {
+  ratingmeter: {
+    width: '100%',
+    height: '100%',
+    height: '100vh',/* Magic here */
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: xMax > 450 ? '-35%' : '-80%',
+  },
+   bodyQuestion: {
         shadowColor: "white",
         borderRadius: '10%',
         width: '100%',
         height: '-100%',
         padding: '10%,'
-    },
+  },
   button: {
       backgroundColor: '#1e90ff',
       color: 'white',

@@ -4,7 +4,7 @@ function ButtonAnswer(QuestionAndAnswer) {
     //display all the answers of the Question as a button
 
     function handleSubmit(e) {
-        for(let a = 0, b = 1; a <QuestionAndAnswer.QuestionAndAnswer.Answer.length; a++, b++)
+        for(let a = 0, b = 0; a <QuestionAndAnswer.QuestionAndAnswer.Answer.length; a++, b++)
         {
             if (e === QuestionAndAnswer.QuestionAndAnswer.Answer[a]){
                 localStorage.setItem(QuestionAndAnswer.QuestionAndAnswer.Question, b)
