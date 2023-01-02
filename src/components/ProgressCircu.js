@@ -1,6 +1,5 @@
 import 'react-circular-progressbar/dist/styles.css';
 import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
-import { useState } from 'react';
 import size from '../data/QuestionAndAnswer.json';
 import logo_stress from '../assets/logo_stress.png';
 

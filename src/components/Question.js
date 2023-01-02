@@ -4,7 +4,6 @@ import ButtonAnswer from './ButtonAnswer';
 import ProgressCircu from './ProgressCircu';
 import App from './rating_meter';
 
-const xMax = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
 function Question() {
   //increment the count to display the next question
@@ -43,7 +42,7 @@ function Question() {
   {
     return(
       <div className="App-header" >
-                <div style={styles.ratingmeter}>
+      <div style={styles.ratingmeter}>
         <App></App>
         </div>
         <body className='App-body' style={styles.bodyQuestion}> 
@@ -59,10 +58,8 @@ const styles = {
   ratingmeter: {
     width: '100%',
     height: '100%',
-    height: '100vh',/* Magic here */
     display: 'flex',
     justifyContent: 'center',
-    marginBottom: xMax > 450 ? '-35%' : '-80%',
   },
    bodyQuestion: {
         shadowColor: "white",

@@ -14,8 +14,7 @@ export default function App() {
     moyennbr = 0;
     for(let i = 0; i < QuestionAndAnswer.Formulaire.length; i++){
         Answer = localStorage.getItem(QuestionAndAnswer.Formulaire[i].Question)
-        if (i == 1){
-            console.log("Answer", Answer)
+        if (i === 1){
             switch (Answer) {
             case "0":
                 Answer = 3;
@@ -34,8 +33,7 @@ export default function App() {
                 break;
             }
         }
-        if (i == 3){
-            console.log("Answer", Answer)
+        if (i === 3){
             switch (Answer) {
             case "0":
                 Answer = 3;
@@ -54,32 +52,32 @@ export default function App() {
                 break;
             }
         }
-        if (i == 4){
-            console.log("Answer", Answer)
-            switch (Answer) {
-            case "0":
-                Answer = 2;
-                    break;
-            case "1":
-                Answer = 1;
-                break;
-            case "2":
-                Answer = 0;
-                break;
-            default:
-                Answer = 3;
-                break;
-            }
-        }
-        listAnswer.push(Answer != 0 ? Answer / (QuestionAndAnswer.Formulaire[i].Answer.length - 1) : 0)
+        // if (i === 4){
+        //     console.log("Answer", Answer)
+        //     switch (Answer) {
+        //     case "0":
+        //         Answer = 2;
+        //             break;
+        //     case "1":
+        //         Answer = 1;
+        //         break;
+        //     case "2":
+        //         Answer = 0;
+        //         break;
+        //     default:
+        //         Answer = 3;
+        //         break;
+        //     }
+        // }
+        listAnswer.push(Answer !== 0 ? Answer / (QuestionAndAnswer.Formulaire[i].Answer.length - 1) : 0)
     }
     console.log("listAnswer", listAnswer)
     listAnswer.forEach(nombre => {
-        if (nombre == 0){
+        if (nombre === 0){
             check++;
         }
       });
-    if (check == listAnswer.length){
+    if (check === listAnswer.length){
             return 0;
     }
     if (listAnswer.length === 0) {
@@ -92,8 +90,6 @@ export default function App() {
         somme += nombre;
       });
     moyennbr = somme / listAnswer.length;
-    console.log("somme", moyennbr)
-
     //e.preventDefault();
     setGauge(moyennbr);
   };
@@ -113,12 +109,7 @@ export default function App() {
     paddingTop: 50
   };
 
-  const buttonContainerStyle = {
-    display: "flex",
-
-    marginTop: 20
-  };
-  if (gauge == 0){
+  if (gauge === 0){
   handleGaugeIncrease();
   }
   return (
