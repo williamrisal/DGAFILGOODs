@@ -15,7 +15,7 @@ let progress6 = 0;
 function ProgressCircu(QuestionAndAnswer) {
 
     let testa = localStorage.getItem("count") != null ? localStorage.getItem("count") : 0;
-    let Answer = localStorage.getItem(QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question)
+    let Answer = Number(localStorage.getItem(QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question))
             if (QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question != null){
                 switch (QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question) {
                     case "Sommeil dans les dernières 24h ?"
@@ -26,10 +26,14 @@ function ProgressCircu(QuestionAndAnswer) {
                         :progress2 = Math.round(((Answer) / (size.Formulaire[testa].Answer.length - 1)) * 100);
                         console.log(Answer + "/ " + (size.Formulaire[testa].Answer.length - 1))
                         break;
-                    case "Etat Psychologique"
-                        :progress3 = Math.round((Answer / (size.Formulaire[testa].Answer.length - 1)) * 100);
-                        console.log(Answer + "/ " + (size.Formulaire[testa].Answer.length - 1))
+
+                    //PSYCO
+                    case "Pression ressentie (complexité,experience, enjeu, expertise, relation...)"
+                        :progress3 = Math.round((Answer / 6) * 100);
+                        console.log(Answer + "/ " + 6)
+                        localStorage.setItem("tmp", 0)
                         break;
+                    ///
                     case "Médicament, Alcool.."
                         :progress4 = Math.round((Answer / (size.Formulaire[testa].Answer.length - 1)) * 100);
                         console.log(Answer + "/ " + (size.Formulaire[testa].Answer.length - 1))

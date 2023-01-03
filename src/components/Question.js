@@ -11,6 +11,7 @@ function Question() {
 
   function handleSubmit(e) {
     e.preventDefault();
+
     if (count < QuestionAndAnswer.Formulaire.length){
       localStorage.setItem("count",count == null ? 0 : count)
       setCount(count + 1);
@@ -27,6 +28,7 @@ function Question() {
             <div style={styles.divcenter} >
               <form onSubmit={handleSubmit} >
               <ButtonAnswer QuestionAndAnswer={QuestionAndAnswer.Formulaire[count]}></ButtonAnswer>
+              {count === 5 ? <button style={styles.button} >Passé </button> : false}
               </form>
           </div>
           </div>
@@ -55,6 +57,7 @@ function Question() {
 
 export default Question;
 const styles = {
+  
   ratingmeter: {
     width: '100%',
     height: '100%',
@@ -69,7 +72,7 @@ const styles = {
         padding: '10%,'
   },
   button: {
-      backgroundColor: '#1e90ff',
+      backgroundColor: 'orange',
       color: 'white',
       padding: '10px 20px',
       border: 'none',

@@ -3,7 +3,6 @@ import "./styles.css";
 import GaugeChart from "react-gauge-chart";
 import QuestionAndAnswer from '../data/QuestionAndAnswer.json';
 
-
 export default function App() {
   const [gauge, setGauge] = useState(0);
   let Answer;
@@ -33,7 +32,8 @@ export default function App() {
                 break;
             }
         }
-        if (i === 3){
+
+        if (i === 5){
             switch (Answer) {
             case "0":
                 Answer = 3;
@@ -52,24 +52,19 @@ export default function App() {
                 break;
             }
         }
-        // if (i === 4){
-        //     console.log("Answer", Answer)
-        //     switch (Answer) {
-        //     case "0":
-        //         Answer = 2;
-        //             break;
-        //     case "1":
-        //         Answer = 1;
-        //         break;
-        //     case "2":
-        //         Answer = 0;
-        //         break;
-        //     default:
-        //         Answer = 3;
-        //         break;
-        //     }
-        // }
-        listAnswer.push(Answer !== 0 ? Answer / (QuestionAndAnswer.Formulaire[i].Answer.length - 1) : 0)
+        if (i >= 2 && i < 4){
+          console.log("------")
+          console.log(QuestionAndAnswer.Formulaire[i].Question)
+           Answer = Answer + Answer;
+          console.log(Answer)
+          console.log("------")
+        }
+        else {
+          if (i === 4){
+            Answer = Answer / 3
+          }
+          listAnswer.push(Answer !== 0 ? Answer / (QuestionAndAnswer.Formulaire[i].Answer.length - 1) : 0)
+        }
     }
     console.log("listAnswer", listAnswer)
     listAnswer.forEach(nombre => {

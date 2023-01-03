@@ -18,13 +18,29 @@
                 "Importante"
             ]
         },
-        {
-            "Question": "Etat Psychologique",
-            "Answer": [
-                "Mal",
-                "Moyen",
-                "Bien"
 
+        {
+            "Question": "Soucis perso",
+            "Answer": [
+                "Majeur",
+                "Mineur",
+                "Aucun"
+            ]
+        },
+        {
+        "Question": "charge mental (hors contrôle)",
+            "Answer": [
+                "Majeur",
+                "Mineur",
+                "Aucun"
+            ]
+        },
+        { 
+        "Question": "Pression ressentie (complexité,experience, enjeu, expertise, relation...)",
+            "Answer": [
+                "Majeur",
+                "Mineur",
+                "Aucun"
             ]
         },
         {
@@ -39,9 +55,10 @@
         {
             "Question": "Horaire d'activité",
             "Answer": [
+                "avant 06H00 ou après 20H00",
                 "8h-16h",
-                "16h-20h ou 6H00-8H00",
-                "avant 06H00 ou après 20H00"
+                "16h-20h ou 6H00-8H00"
+
             ]
         },
         {
