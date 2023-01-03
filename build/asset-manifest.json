@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3ddc59ea.css",
+    "main.js": "/static/js/main.ba982868.js",
+    "static/js/787.2fb03591.chunk.js": "/static/js/787.2fb03591.chunk.js",
+    "static/media/Ministère_des_Armées.svg-3.png": "/static/media/Ministère_des_Armées.svg-3.4d47a7aea24ae969f9bd.png",
+    "static/media/logo_stress.png": "/static/media/logo_stress.38f243780c624da2f450.png",
+    "index.html": "/index.html",
+    "main.3ddc59ea.css.map": "/static/css/main.3ddc59ea.css.map",
+    "main.ba982868.js.map": "/static/js/main.ba982868.js.map",
+    "787.2fb03591.chunk.js.map": "/static/js/787.2fb03591.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3ddc59ea.css",
+    "static/js/main.ba982868.js"
+  ]
+}

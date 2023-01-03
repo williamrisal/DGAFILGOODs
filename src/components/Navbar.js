@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
 import logo from '../assets/Ministère_des_Armées.svg-3.png' // import image
-import { Form, FormControl, Button, Nav } from 'react-bootstrap';
+import { Form, FormControl} from 'react-bootstrap';
 
 
 function Navbar () {
@@ -15,9 +14,7 @@ function Navbar () {
   return (
         <nav style={styles.navbar} class="navbar bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
             <img src={logo} alt="Logo" width="100" height="80" class="d-inline-block align-text-top"/>
-            </a>
         </div>
         <div style={styles.menubar}>
             <Form inline>

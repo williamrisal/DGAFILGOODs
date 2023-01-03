@@ -5,13 +5,12 @@ import Notif from './components/Notif'
 import React from 'react';
 
 function App() {
-
   return (
     <div>
       <Navbar />
       <Notif />
       <Question></Question>
-      </div>
+    </div>
   );
 }
 

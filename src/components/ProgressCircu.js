@@ -14,8 +14,8 @@ let progress6 = 0;
 
 function ProgressCircu(QuestionAndAnswer) {
 
-    let testa = localStorage.getItem("count") != null ? localStorage.getItem("count") : 0;
-    let Answer = Number(localStorage.getItem(QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question))
+    let testa =  localStorage.getItem("count") != null ? localStorage.getItem("count") : 0;
+    let Answer =  Number(localStorage.getItem(QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question))
             if (QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question != null){
                 switch (QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question) {
                     case "Sommeil dans les dernières 24h ?"

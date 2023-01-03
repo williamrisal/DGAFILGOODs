@@ -118,7 +118,19 @@ export default function App() {
           colors={["#FF0000", "#00FF00"]}
           animateDuration={4000}
         />
+        <text style={styles.ratingmetertext}>{gauge >= 0.7 ? "Risque  acceptable" : gauge >= 0.3 ? "Risque Modéré" : "Risque non acceptable" }</text>
       </div>
+      
     </div>
   );
 }
+
+const styles = {
+  ratingmetertext: {
+    color: 'white',
+    fontSize: 30,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingBottom: 80,
+  },
+};
