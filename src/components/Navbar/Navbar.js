@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from '../assets/Ministère_des_Armées.svg-3.png' // import image
+import logo from '../../assets/Ministère_des_Armées.svg-3.png' // import image
 import { Form, FormControl} from 'react-bootstrap';
 
 

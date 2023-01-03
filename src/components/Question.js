@@ -2,7 +2,7 @@ import { useState } from 'react';
 import QuestionAndAnswer from '../data/QuestionAndAnswer.json';
 import ButtonAnswer from './ButtonAnswer';
 import ProgressCircu from './ProgressCircu';
-import App from './rating_meter';
+import App from './RatingMeter/rating_meter';
 
 
 function Question() {

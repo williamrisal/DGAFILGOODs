@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
 import GaugeChart from "react-gauge-chart";
-import QuestionAndAnswer from '../data/QuestionAndAnswer.json';
+import QuestionAndAnswer from '../../data/QuestionAndAnswer.json';
 
 export default function App() {
   const [gauge, setGauge] = useState(0);
@@ -119,6 +119,7 @@ export default function App() {
           animateDuration={4000}
         />
         <text style={styles.ratingmetertext}>{gauge >= 0.7 ? "Risque  acceptable" : gauge >= 0.3 ? "Risque Modéré" : "Risque non acceptable" }</text>
+        <text style={{paddingBottom: '60%'}}> {gauge < 0.5 ? "Consulter le  chef de quart" : false }</text>
       </div>
       
     </div>
@@ -131,6 +132,6 @@ const styles = {
     fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center',
-    paddingBottom: 80,
+    paddingBottom: "10%",
   },
 };

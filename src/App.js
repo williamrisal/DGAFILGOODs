@@ -1,7 +1,7 @@
 import './App.css';
 import Question from './components/Question';
-import Navbar from './components/Navbar'
-import Notif from './components/Notif'
+import Navbar from './components/Navbar/Navbar'
+import Notif from './components/Notif/Notif'
 import React from 'react';
 
 function App() {
