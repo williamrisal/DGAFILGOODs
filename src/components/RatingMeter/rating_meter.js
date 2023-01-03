@@ -53,11 +53,7 @@ export default function App() {
             }
         }
         if (i >= 2 && i < 4){
-          console.log("------")
-          console.log(QuestionAndAnswer.Formulaire[i].Question)
            Answer = Answer + Answer;
-          console.log(Answer)
-          console.log("------")
         }
         else {
           if (i === 4){
@@ -85,7 +81,6 @@ export default function App() {
         somme += nombre;
       });
     moyennbr = somme / listAnswer.length;
-    //e.preventDefault();
     setGauge(moyennbr);
   };
 

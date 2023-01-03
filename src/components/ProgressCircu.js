@@ -27,13 +27,11 @@ function ProgressCircu(QuestionAndAnswer) {
                         console.log(Answer + "/ " + (size.Formulaire[testa].Answer.length - 1))
                         break;
 
-                    //PSYCO
                     case "Pression ressentie (complexité,experience, enjeu, expertise, relation...)"
                         :progress3 = Math.round((Answer / 6) * 100);
                         console.log(Answer + "/ " + 6)
                         localStorage.setItem("tmp", 0)
                         break;
-                    ///
                     case "Médicament, Alcool.."
                         :progress4 = Math.round((Answer / (size.Formulaire[testa].Answer.length - 1)) * 100);
                         console.log(Answer + "/ " + (size.Formulaire[testa].Answer.length - 1))
