@@ -12,14 +12,26 @@ let progress4 = 0;
 let progress5 = 0;
 let progress6 = 0;
 
-function ProgressCircu(QuestionAndAnswer) {
+var couleur1 = 'black';
 
+function ProgressCircu(QuestionAndAnswer) {
     let testa =  localStorage.getItem("count") != null ? localStorage.getItem("count") : 0;
     let Answer =  Number(localStorage.getItem(QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question))
             if (QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question != null){
                 switch (QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question) {
                     case "Sommeil dans les dernières 24h ?"
-                        :progress1 = Math.round(((Answer) / (size.Formulaire[testa].Answer.length - 1)) * 100);
+                        :progress1 = Number(Math.round(((Answer) / (size.Formulaire[testa].Answer.length - 1)) * 100));
+                      var couleur1 = 'black';
+                        if (progress1 > 70){
+                            couleur1 = 'green'
+                        }
+                        else if (progress1 > 50){
+                            couleur1 = 'orange'
+                        }
+                        else{
+                            couleur1 = 'red'
+                        }
+                        console.log("progress1", progress1)
                         console.log(Answer + "/ " + (size.Formulaire[testa].Answer.length - 1))
                         break;
                     case "Fatigue"
@@ -53,7 +65,6 @@ function ProgressCircu(QuestionAndAnswer) {
         <body>
             <div style={{width: '80%'}}>
                 <div style={styles.contain}>
-
                     <div style={styles.spaceElement}>
                     <CircularProgressbarWithChildren value={progress1} styles={styles.progress1}>
                     <div style={{ fontSize: '100%', paddingBottom: 5 }}>🛌</div>
@@ -99,6 +110,7 @@ function ProgressCircu(QuestionAndAnswer) {
                     </CircularProgressbarWithChildren>
                     </div>
                     <div style={styles.spaceElement}>
+                        
                     <CircularProgressbarWithChildren value={progress6} styles={styles.progress6}>
                     <div style={{ fontSize: '100%', paddingBottom: 5 }}>🤒</div>
                         <div style={{ fontSize: '40%', marginTop: -5 }}>
@@ -134,17 +146,7 @@ function ProgressCircu(QuestionAndAnswer) {
     //change color progressebar
     progress1: {
         path: {
-            stroke: `#1e90ff`,
-        },
-        trail: {
-            stroke: '#d6d6d6',
-        },
-        text: {
-            fill: '#1e90ff',
-            fontSize: '16px',
-        },
-        background: {
-            fill: '#3e98c7',
+            stroke: couleur1,
         },
     },
     progress2: {

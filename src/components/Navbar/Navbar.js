@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import logo from '../../assets/Ministère_des_Armées.svg-3.png' // import image
 import { Form, FormControl} from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
 
 
 function Navbar () {
     const [selectedCity, setSelectedCity] = useState('');
     const cities = ['Brest', 'Bordeaux', 'Cazaux', 'Mont-de-Marsan', 'Toulouse', 'Istres', 'Aix-en-Provence'];
-  
+    const navigate = useNavigate();
+
     function handleChange(event) {
         setSelectedCity(event.target.value);
     }
+
+    function handleConfirmClick() {
+        navigate("/login"); 
+      }
     
   return (
         <nav style={styles.navbar} class="navbar bg-light">
@@ -17,6 +23,9 @@ function Navbar () {
             <img src={logo} alt="Logo" width="100" height="80" class="d-inline-block align-text-top"/>
         </div>
         <div style={styles.menubar}>
+        <button type="button" onClick={handleConfirmClick}>
+       Admin click me
+        </button>
             <Form inline>
                 <FormControl as="select" value={selectedCity} onChange={handleChange}>
                     {cities.map((city) => (

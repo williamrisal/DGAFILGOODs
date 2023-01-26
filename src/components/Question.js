@@ -2,7 +2,8 @@ import { useState } from 'react';
 import QuestionAndAnswer from '../data/QuestionAndAnswer.json';
 import ButtonAnswer from './ButtonAnswer';
 import ProgressCircu from './ProgressCircu';
-import App from './RatingMeter/rating_meter';
+import RatingMeter from './RatingMeter/rating_meter';
+import ProgressBar from './progress-bar/progress-bar';
 
 
 function Question() {
@@ -17,21 +18,37 @@ function Question() {
       setCount(count + 1);
       console.log("count",count)
     }
+    
+  }
+
+  function handleBack(e){
+    e.preventDefault();
+    if (count > 0){
+      localStorage.setItem("count",count == 0 ? 0 : count)
+      localStorage.setItem(QuestionAndAnswer.Formulaire[count].Question, 0)
+      setCount(count - 1);
+      console.log("count",count)
+    }
   }
   if (count < QuestionAndAnswer.Formulaire.length){
     return (
       <div className="App-header" >
         <text>{QuestionAndAnswer.Formulaire[count].Question}</text>
+        <ProgressBar key={1}  completed={(count / QuestionAndAnswer.Formulaire.length) * 100} />
         <body className='App-body' style={styles.bodyQuestion}>     
           <div>
             <br></br>
             <div style={styles.divcenter} >
               <form onSubmit={handleSubmit} >
               <ButtonAnswer QuestionAndAnswer={QuestionAndAnswer.Formulaire[count]}></ButtonAnswer>
-              {count === 5 ? <button style={styles.button} >Passé </button> : false}
+              {count === 5 ? <button style={styles.button} >Je ne souhaite pas répondre </button> : false}
+              <button style={styles.button} onClick={handleBack} >Retour</button>
+
               </form>
           </div>
+          
           </div>
+          
           <br/>
           <br/>
           <br/>
@@ -45,7 +62,7 @@ function Question() {
     return(
       <div className="App-header" >
       <div style={styles.ratingmeter}>
-        <App></App>
+        <RatingMeter></RatingMeter>
         </div>
         <body className='App-body' style={styles.bodyQuestion}> 
           <ProgressCircu QuestionAndAnswer={QuestionAndAnswer}></ProgressCircu>      

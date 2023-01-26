@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./styles.css";
 import GaugeChart from "react-gauge-chart";
 import QuestionAndAnswer from '../../data/QuestionAndAnswer.json';
+import axios from 'axios';
 
 export default function App() {
   const [gauge, setGauge] = useState(0);
@@ -9,6 +10,34 @@ export default function App() {
   const listAnswer = [];
   let moyennbr = 0;
   let check = 0;
+
+  const senddata = (listAnswer) => {
+    const liststats = JSON.stringify(listAnswer);
+    console.log(localStorage.getItem("location"))
+    var data = JSON.stringify({
+      "name": "ccer",
+      "location": localStorage.getItem("location"),
+      "stats": liststats
+    });
+
+    var config = {
+      method: 'post',
+      url: 'http://localhost:8080/ccer',
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+    
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });    
+  }
+
   const handleGaugeIncrease = () => {
     moyennbr = 0;
     for(let i = 0; i < QuestionAndAnswer.Formulaire.length; i++){
@@ -62,7 +91,6 @@ export default function App() {
           listAnswer.push(Answer !== 0 ? Answer / (QuestionAndAnswer.Formulaire[i].Answer.length - 1) : 0)
         }
     }
-    console.log("listAnswer", listAnswer)
     listAnswer.forEach(nombre => {
         if (nombre === 0){
             check++;
@@ -80,7 +108,9 @@ export default function App() {
       listAnswer.forEach(nombre => {
         somme += nombre;
       });
+
     moyennbr = somme / listAnswer.length;
+    senddata(listAnswer);
     setGauge(moyennbr);
   };
 
@@ -100,8 +130,9 @@ export default function App() {
   };
 
   if (gauge === 0){
-  handleGaugeIncrease();
+    handleGaugeIncrease();
   }
+  
   return (
     <div className="app">
       <div style={gaugeContainerStyle}>
@@ -113,10 +144,9 @@ export default function App() {
           colors={["#FF0000", "#00FF00"]}
           animateDuration={4000}
         />
-        <text style={styles.ratingmetertext}>{gauge >= 0.7 ? "Risque  acceptable" : gauge >= 0.3 ? "Risque Modéré" : "Risque non acceptable" }</text>
-        <text style={{paddingBottom: '60%'}}> {gauge < 0.5 ? "Consulter le  chef de quart" : false }</text>
+        <text style={styles.ratingmetertext}>{gauge >= 0.7 ? "Risque acceptable" : gauge >= 0.3 ? "Risque Modéré" : "Risque non acceptable" }</text>
+        <text style={{paddingBottom: '60%'}}> {gauge < 0.5 ? "Consulter le chef de quart" : false }</text>
       </div>
-      
     </div>
   );
 }
@@ -124,7 +154,7 @@ export default function App() {
 const styles = {
   ratingmetertext: {
     color: 'white',
-    fontSize: 30,
+    fontSize: '100%',
     fontWeight: 'bold',
     textAlign: 'center',
     paddingBottom: "10%",
