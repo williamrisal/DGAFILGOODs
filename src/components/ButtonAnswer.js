@@ -3,11 +3,13 @@ import ListGroup from 'react-bootstrap/ListGroup';
 function ButtonAnswer(QuestionAndAnswer) {
     //display all the answers of the Question as a button
 
-    async function handleSubmit(e) {
-        var res;
+    function handleSubmit(e) {
+        var res = 0;
+        console.log(e, "<-- e")
         for(let a = 0, b = 0; a < QuestionAndAnswer.QuestionAndAnswer.Answer.length; a++, b++)
         {
             if (e === QuestionAndAnswer.QuestionAndAnswer.Answer[a]){
+                console.log(e, "<-- e")
                 if (QuestionAndAnswer.QuestionAndAnswer.Question === "Soucis perso"){
                     localStorage.setItem("tmp", b)
 
@@ -40,10 +42,8 @@ function ButtonAnswer(QuestionAndAnswer) {
         
         <div>
             {QuestionAndAnswer.QuestionAndAnswer.Answer.map((reponse) => (
-                <ListGroup.Item style={styles.button}  action variant="primary" >
-                    <div onClick={() => handleSubmit(reponse)}>
+                <ListGroup.Item style={styles.button}  action onClick={() => handleSubmit(reponse)} variant="primary" >
                     {reponse}
-                    </div>
                 </ListGroup.Item>
             ))}
         </div>

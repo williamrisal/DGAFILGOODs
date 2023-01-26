@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 function MainPage() {
   const [selectedCity, setSelectedCity] = useState('Choisir');
   const navigate = useNavigate();
-  localStorage.setItem('city', null);
+  localStorage.clear();
+  
 
   function handleConfirmClick() {
     localStorage.setItem('city', null);
@@ -44,7 +45,7 @@ function MainPage() {
             </select>
             </div>
             <button type="button" onClick={handleConfirmClick}>
-      Click me
+      Confirm
     </button>
         </div>
     );

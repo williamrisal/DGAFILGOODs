@@ -4,33 +4,38 @@ import ButtonAnswer from './ButtonAnswer';
 import ProgressCircu from './ProgressCircu';
 import RatingMeter from './RatingMeter/rating_meter';
 import ProgressBar from './progress-bar/progress-bar';
-
+import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router';
 
 function Question() {
   //increment the count to display the next question
   const [count, setCount] = useState(0);    
-
+  const navigate = useNavigate();
   function handleSubmit(e) {
     e.preventDefault();
 
     if (count < QuestionAndAnswer.Formulaire.length){
       localStorage.setItem("count",count == null ? 0 : count)
       setCount(count + 1);
-      console.log("count",count)
     }
     
   }
-
+  function showresult(){
+    navigate('/result');
+  }
   function handleBack(e){
     e.preventDefault();
-    if (count > 0){
+    if (count >= QuestionAndAnswer.Formulaire.length){
+      setCount(count - 1);
+    }
+    else if (count > 0){
       localStorage.setItem("count",count == 0 ? 0 : count)
       localStorage.setItem(QuestionAndAnswer.Formulaire[count].Question, 0)
       setCount(count - 1);
-      console.log("count",count)
     }
   }
   if (count < QuestionAndAnswer.Formulaire.length){
+    console.log("count",count);
     return (
       <div className="App-header" >
         <text>{QuestionAndAnswer.Formulaire[count].Question}</text>
@@ -62,7 +67,9 @@ function Question() {
     return(
       <div className="App-header" >
       <div style={styles.ratingmeter}>
-        <RatingMeter></RatingMeter>
+        <button onClick={showresult}>  Voir resultat </button>
+        <button style={styles.button} onClick={handleBack} >Retour</button>
+
         </div>
         <body className='App-body' style={styles.bodyQuestion}> 
           <ProgressCircu QuestionAndAnswer={QuestionAndAnswer}></ProgressCircu>      

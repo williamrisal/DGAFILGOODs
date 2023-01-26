@@ -15,22 +15,12 @@ let progress6 = 0;
 var couleur1 = 'black';
 
 function ProgressCircu(QuestionAndAnswer) {
-    let testa =  localStorage.getItem("count") != null ? localStorage.getItem("count") : 0;
+    let testa = localStorage.getItem("count") != null ? localStorage.getItem("count") : 0;
     let Answer =  Number(localStorage.getItem(QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question))
             if (QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question != null){
                 switch (QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question) {
                     case "Sommeil dans les dernières 24h ?"
                         :progress1 = Number(Math.round(((Answer) / (size.Formulaire[testa].Answer.length - 1)) * 100));
-                      var couleur1 = 'black';
-                        if (progress1 > 70){
-                            couleur1 = 'green'
-                        }
-                        else if (progress1 > 50){
-                            couleur1 = 'orange'
-                        }
-                        else{
-                            couleur1 = 'red'
-                        }
                         console.log("progress1", progress1)
                         console.log(Answer + "/ " + (size.Formulaire[testa].Answer.length - 1))
                         break;
@@ -66,7 +56,7 @@ function ProgressCircu(QuestionAndAnswer) {
             <div style={{width: '80%'}}>
                 <div style={styles.contain}>
                     <div style={styles.spaceElement}>
-                    <CircularProgressbarWithChildren value={progress1} styles={styles.progress1}>
+                    <CircularProgressbarWithChildren value={progress1} styles={progress1 > 0 && progress1 <= 33 ? styles.red : progress1 > 33 && progress1 <= 66 ? styles.yellow : styles.green}>
                     <div style={{ fontSize: '100%', paddingBottom: 5 }}>🛌</div>
                         <div style={{ fontSize: '40%', marginTop: -5 }}>
                             <strong>{progress1}%</strong>  Sommeil
@@ -75,7 +65,7 @@ function ProgressCircu(QuestionAndAnswer) {
                     </div>
 
                     <div style={styles.spaceElement}>
-                    <CircularProgressbarWithChildren value={progress2} styles={styles.progress2}>
+                    <CircularProgressbarWithChildren value={progress2} styles={progress2 > 0 && progress2 <= 33 ? styles.red : progress2 > 33 && progress2 <= 66 ? styles.yellow : styles.green}>
                     <div style={{ fontSize: '100%', paddingBottom: 5 }}>😴</div>
                         <div style={{ fontSize: '40%', marginTop: -5 }}>
                             <strong>{progress2}%</strong> Fatigue
@@ -84,7 +74,7 @@ function ProgressCircu(QuestionAndAnswer) {
                     </div>
 
                     <div style={styles.spaceElement}>
-                    <CircularProgressbarWithChildren value={progress3} styles={styles.progress3}>
+                    <CircularProgressbarWithChildren value={progress3} styles={progress3 > 0 && progress3 <= 33 ? styles.green : progress3 > 33 && progress3 <= 66 ? styles.yellow : styles.red}>
                     <img style={{ width: '40%', marginTop: -5}} src={logo_stress} alt="doge" />
                         <div style={{ fontSize: '40%', marginTop: -5 , marginLeft: 10}}>
                             <strong>{progress3}%</strong> Etat psycologique
@@ -93,7 +83,7 @@ function ProgressCircu(QuestionAndAnswer) {
                     </div>
                     
                     <div style={styles.spaceElement}>
-                    <CircularProgressbarWithChildren value={progress4} styles={styles.progress4}>
+                    <CircularProgressbarWithChildren value={progress4} styles={progress4 > 0 && progress4 <= 33 ? styles.green : progress4 > 33 && progress4 <= 66 ? styles.yellow : styles.red}>
                     <div style={{ fontSize: '100%', paddingBottom: 5 }}>💊</div>
                         <div style={{ fontSize: '40%', marginTop: -5 , marginLeft: 10}}>
                             <strong>{progress4}%</strong> Medicament, Alcool..
@@ -102,7 +92,7 @@ function ProgressCircu(QuestionAndAnswer) {
                     </div>
                     <div style={styles.spaceElement}>
 
-                    <CircularProgressbarWithChildren value={progress5} styles={styles.progress5}>
+                    <CircularProgressbarWithChildren value={progress5} styles={progress5 > 0 && progress5 <= 33 ? styles.red : progress5 > 33 && progress5 <= 66 ? styles.yellow : styles.green}>
                     <div style={{ fontSize: '100%', paddingBottom: 5 }}>🕦🧑‍💻 </div>
                         <div style={{ fontSize: '40%', marginTop: -5 , marginLeft: 10}}>
                             <strong>{progress5}%</strong> Horaire d'activité
@@ -111,7 +101,7 @@ function ProgressCircu(QuestionAndAnswer) {
                     </div>
                     <div style={styles.spaceElement}>
                         
-                    <CircularProgressbarWithChildren value={progress6} styles={styles.progress6}>
+                    <CircularProgressbarWithChildren value={progress6} styles={progress6 > 0 && progress6 <= 33 ? styles.red : progress6 > 33 && progress6 <= 66 ? styles.yellow : styles.green}>
                     <div style={{ fontSize: '100%', paddingBottom: 5 }}>🤒</div>
                         <div style={{ fontSize: '40%', marginTop: -5 }}>
                             <strong>{progress6}%</strong> ETAT
@@ -127,6 +117,53 @@ function ProgressCircu(QuestionAndAnswer) {
   export default ProgressCircu;
 
   const styles = {
+	red: {
+		trail: {
+            stroke: '#d6d6d6',
+        },
+        text: {
+            fill: '#1e90ff',
+            fontSize: '16px',
+        },
+        background: {
+            fill: '#3e98c7',
+        },
+		path: {
+			stroke: 'red',
+		}
+	},
+	yellow: {
+		trail: {
+            stroke: '#d6d6d6',
+        },
+        text: {
+            fill: '#1e90ff',
+            fontSize: '16px',
+        },
+        background: {
+            fill: '#3e98c7',
+        },
+		path: {
+			stroke: 'yellow',
+			
+		}
+	},
+	green: {
+		trail: {
+            stroke: '#d6d6d6',
+        },
+        text: {
+            fill: '#1e90ff',
+            fontSize: '16px',
+        },
+        background: {
+            fill: '#3e98c7',
+        },
+		path: {
+			stroke: 'green',
+		}
+	},
+
     contain: {
         flex: 1,
         //tialle
@@ -142,88 +179,4 @@ function ProgressCircu(QuestionAndAnswer) {
         marginLeft: xMax < 600 ? 0 : 20,
         marginRight: xMax < 600 ? 0 : 20
     },
-
-    //change color progressebar
-    progress1: {
-        path: {
-            stroke: couleur1,
-        },
-    },
-    progress2: {
-        path: {
-            stroke: 'red',
-        },
-        trail: {
-            stroke: '#d6d6d6',
-        },
-        text: {
-            fill: '#1e90ff',
-            fontSize: '16px',
-        },
-        background: {
-            fill: '#3e98c7',
-        },
-
-
-    },
-    progress3: {
-        path: {
-            stroke: 'gris',
-        },
-        trail: {
-            stroke: '#d6d6d6',
-        },
-        text: {
-            fill: '#1e90ff',
-            fontSize: '16px',
-        },
-        background: {
-            fill: '#3e98c7',
-        },
-    },
-    progress4: {
-        path: {
-            stroke: 'green',
-        },
-        trail: {
-            stroke: '#d6d6d6',
-        },
-        text: {
-            fill: '#1e90ff',
-            fontSize: '16px',
-        },
-        background: {
-            fill: '#3e98c7',
-        },
-    },
-    progress5: {
-        path: {
-            stroke: 'yellow',
-        },
-        trail: {
-            stroke: '#d6d6d6',
-        },
-        text: {
-            fill: '#1e90ff',
-            fontSize: '16px',
-        },
-        background: {
-            fill: '#3e98c7',
-        },
-    },
-    progress6: {
-        path: {
-            stroke: 'purple',
-        },
-        trail: {
-            stroke: '#d6d6d6',
-        },
-        text: {
-            fill: '#1e90ff',
-            fontSize: '16px',
-        },
-        background: {
-            fill: '#3e98c7',
-        },
-    }
 }
