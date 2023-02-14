@@ -6,24 +6,11 @@ function ButtonAnswer(QuestionAndAnswer) {
     function handleSubmit(e) {
         var res = 0;
         console.log(e, "<-- e")
+
         for(let a = 0, b = 0; a < QuestionAndAnswer.QuestionAndAnswer.Answer.length; a++, b++)
         {
             if (e === QuestionAndAnswer.QuestionAndAnswer.Answer[a]){
-                console.log(e, "<-- e")
-                if (QuestionAndAnswer.QuestionAndAnswer.Question === "Soucis perso"){
-                    localStorage.setItem("tmp", b)
-
-                }
-                else if (QuestionAndAnswer.QuestionAndAnswer.Question === "charge mental (hors contrôle)"){
-                    res = Number(localStorage.getItem("tmp")) + b;
-                    localStorage.setItem("tmp",res);
-
-                }
-                else if (QuestionAndAnswer.QuestionAndAnswer.Question === "Pression ressentie (complexité,experience, enjeu, expertise, relation...)") {
-                    res = Number(localStorage.getItem("tmp")) + b
-                    localStorage.setItem(QuestionAndAnswer.QuestionAndAnswer.Question,res);
-                }
-                else if (QuestionAndAnswer.QuestionAndAnswer.Question === "Horaire d'activité") {
+                if (QuestionAndAnswer.QuestionAndAnswer.Question === "Horaire d'activité") {
                     if (b >= 1){
                         localStorage.setItem(QuestionAndAnswer.QuestionAndAnswer.Question,2);
                     }
@@ -41,11 +28,21 @@ function ButtonAnswer(QuestionAndAnswer) {
     return (
         
         <div>
-            {QuestionAndAnswer.QuestionAndAnswer.Answer.map((reponse) => (
-                <ListGroup.Item style={styles.button}  action onClick={() => handleSubmit(reponse)} variant="primary" >
-                    {reponse}
-                </ListGroup.Item>
-            ))}
+        {QuestionAndAnswer.QuestionAndAnswer.Answer.map((reponse, index) => {
+            let itemColor;
+            if (index === 0) {
+            itemColor = 'green';
+            } else if (index === QuestionAndAnswer.QuestionAndAnswer.Answer.length - 1) {
+            itemColor = 'red';
+            } else {
+            itemColor = 'orange';
+            }
+            return (
+            <ListGroup.Item style={{...styles.button, backgroundColor: itemColor}} action onClick={() => handleSubmit(reponse)} variant="primary">
+                {reponse}
+            </ListGroup.Item>
+            );
+        })}
         </div>
     );
   }
@@ -54,7 +51,6 @@ function ButtonAnswer(QuestionAndAnswer) {
   
   const styles = {
     button: {
-        backgroundColor: '#1e90ff',
         color: 'white',
         padding: '10px 20px',
         border: 'none',

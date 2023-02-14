@@ -3,10 +3,11 @@
         {
             "Question": "Sommeil dans les dernières 24h ?",
             "Answer": [
-                "Trés peu dormi(<4h)",
-                "Peu dormi(4-6h)",
+                "Bien dormi(>8h)",
                 "Moyen(6-8h)",
-                "Bien dormi(>8h)"
+                "Peu dormi(4-6h)",
+                "Trés peu dormi(<4h)"
+
             ]
         },
         {
@@ -22,25 +23,25 @@
         {
             "Question": "Soucis perso",
             "Answer": [
-                "Majeur",
+                "Aucun",
                 "Mineur",
-                "Aucun"
+                "Majeur"
             ]
         },
         {
         "Question": "charge mental (hors contrôle)",
             "Answer": [
-                "Majeur",
+                "Aucun",
                 "Mineur",
-                "Aucun"
+                "Majeur"
             ]
         },
         { 
         "Question": "Pression ressentie (complexité,experience, enjeu, expertise, relation...)",
             "Answer": [
-                "Majeur",
+                "Aucun",
                 "Mineur",
-                "Aucun"
+                "Majeur"
             ]
         },
         {
@@ -64,9 +65,10 @@
         {
             "Question": "Etat",
             "Answer": [
-                "Etat fébrile",
+                "en bonne forme",
                 "Moyen forme ou infection légère",
-                "en bonne forme"
+                "Etat fébrile"
+
             ]
         }
     ]

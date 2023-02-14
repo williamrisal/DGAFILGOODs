@@ -7,12 +7,11 @@ import { useNavigate } from "react-router-dom";
 function MainPage() {
   const [selectedCity, setSelectedCity] = useState('Choisir');
   const navigate = useNavigate();
-  localStorage.clear();
   
-
   function handleConfirmClick() {
-    localStorage.setItem('city', null);
 
+    localStorage.setItem('city', null);
+    localStorage.clear();
     localStorage.setItem('city', selectedCity);
     navigate("/Question");
     
@@ -44,7 +43,7 @@ function MainPage() {
             <option value="Aix-en-Provence">Aix-en-Provence</option>
             </select>
             </div>
-            <button type="button" onClick={handleConfirmClick}>
+            <button style={styles.buttonconfirm} type="button" onClick={handleConfirmClick}>
       Confirm
     </button>
         </div>
@@ -60,17 +59,17 @@ const styles = {
     selectbutton: {
         margin: '2%',
     },
-    buttonconfirm: {
-        backgroundColor: '#1e90ff',
-        color: 'white',
-        padding: '10px 20px',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        fontSize: '16px',
-        fontWeight: 'bold',
-        margin: '10px'
-    },
+      buttonconfirm: {
+          backgroundColor: '#1e90ff',
+          color: 'white',
+          padding: '10px 20px',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          fontSize: '16px',
+          fontWeight: 'bold',
+          margin: '10px'
+      },
     mainpage: {
         backgroundColor: '#282c34',
         display: 'flex',

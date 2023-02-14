@@ -3,20 +3,32 @@ import "./styles.css";
 import GaugeChart from "react-gauge-chart";
 import QuestionAndAnswer from '../../data/QuestionAndAnswer.json';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import smileyrouge from "../../../src/assets/smileyJaune.png"
+import smileyvert from "../../../src/assets/smileyVert.png"
+import smileyjaune from "../../../src/assets/smileyJaune.png"
 
 export default function App() {
   const [gauge, setGauge] = useState(0);
-  let Answer;
+  const navigate = useNavigate();
+  let Answer = 0;
   const listAnswer = [];
   let moyennbr = 0;
   let check = 0;
 
+  localStorage.setItem("rating", true);
+  const returnhome = () => {
+    //nettoyer tout le cach
+    //retourner a la page d'accueil
+    window.location.href='http://localhost:3000'
+  }
+
   const senddata = (listAnswer) => {
     const liststats = JSON.stringify(listAnswer);
-    console.log(localStorage.getItem("location"))
+
     var data = JSON.stringify({
       "name": "ccer",
-      "location": localStorage.getItem("location"),
+      "location": localStorage.getItem('city'),
       "stats": liststats
     });
 
@@ -42,76 +54,74 @@ export default function App() {
     moyennbr = 0;
     for(let i = 0; i < QuestionAndAnswer.Formulaire.length; i++){
         Answer = localStorage.getItem(QuestionAndAnswer.Formulaire[i].Question)
-        if (i === 1){
-            switch (Answer) {
-            case "0":
-                Answer = 3;
-                    break;
-            case "1":
-                Answer = 2;
-                break;
-            case "2":
-                Answer = 1;
-                break;
-            case "3":
-                Answer = 0;
-                break;
-            default:
-                Answer = 3;
-                break;
-            }
-        }
+        // if (i === 1){
+        //     switch (Answer) {
+        //     case "0":
+        //         Answer = 3;
+        //             break;
+        //     case "1":
+        //         Answer = 2;
+        //         break;
+        //     case "2":
+        //         Answer = 1;
+        //         break;
+        //     case "3":
+        //         Answer = 0;
+        //         break;
+        //     default:
+        //         Answer = 3;
+        //         break;
+        //     }
+        // }
 
-        if (i === 5){
-            switch (Answer) {
-            case "0":
-                Answer = 3;
-                    break;
-            case "1":
-                Answer = 2;
-                break;
-            case "2":
-                Answer = 1;
-                break;
-            case "3":
-                Answer = 0;
-                break;
-            default:
-                Answer = 3;
-                break;
-            }
-        }
-        if (i >= 2 && i < 4){
-           Answer = Answer + Answer;
-        }
-        else {
-          if (i === 4){
-            Answer = Answer / 3
-          }
-          listAnswer.push(Answer !== 0 ? Answer / (QuestionAndAnswer.Formulaire[i].Answer.length - 1) : 0)
-        }
+        // if (i === 5){
+        //     switch (Answer) {
+        //     case "0":
+        //         Answer = 3;
+        //             break;
+        //     case "1":
+        //         Answer = 2;
+        //         break;
+        //     case "2":
+        //         Answer = 1;
+        //         break;
+        //     case "3":
+        //         Answer = 0;
+        //         break;
+        //     default:
+        //         Answer = 3;
+        //         break;
+        //     }
+        // }
+        console.log(Answer, "Answer")
+        listAnswer.push(Answer !== 0 ? Answer / (QuestionAndAnswer.Formulaire[i].Answer.length -  1) : 0)
+
     }
-    listAnswer.forEach(nombre => {
+
+    var champsSelectionnes = listAnswer.slice(2, 5);
+    var sommepsyco = champsSelectionnes.reduce(function(a, b) { return a + b; });
+    var moyenquestionpsyco = sommepsyco / champsSelectionnes.length;
+
+    const firstPart = listAnswer.slice(0, 2);
+    const lastPart = listAnswer.slice(4);
+    const newArray = firstPart.concat(lastPart);
+
+    newArray[2] = moyenquestionpsyco;
+    newArray.forEach(nombre => {
         if (nombre === 0){
             check++;
         }
       });
-    if (check === listAnswer.length){
-            return 0;
-    }
-    if (listAnswer.length === 0) {
-        return 0;
-      }
     
       // On calcule la somme des éléments du tableau
       let somme = 0;
-      listAnswer.forEach(nombre => {
+      newArray.forEach(nombre => {
         somme += nombre;
       });
 
-    moyennbr = somme / listAnswer.length;
-    senddata(listAnswer);
-    setGauge(moyennbr);
+    moyennbr = somme / newArray.length;
+    senddata(newArray);
+    setGauge(0.999999 - moyennbr);
   };
 
   const chartStyle = {
@@ -135,7 +145,9 @@ export default function App() {
   
   return (
     <div className="app">
+
       <div style={gaugeContainerStyle}>
+
         <GaugeChart
           style={chartStyle}
           textColor="#FFFAFA"
@@ -144,8 +156,12 @@ export default function App() {
           colors={["#FF0000", "#00FF00"]}
           animateDuration={4000}
         />
+
+        <button style={styles.buttonconfirm} onClick={returnhome}>Retour à l'accueil</button>
+        {gauge > 0.7 ? <img src={smileyvert} alt="smileyvert" style={{width: '20%', height: '70%' , margin: "1%"}}/> : gauge > 0.3 ? <img src={smileyjaune} alt="smileyjaune" style={{width: '20%', height: '70%' , margin: "1%"}}/> : <img src={smileyrouge} alt="smileyrouge" style={{width: '20%', height: '70%' , margin: "1%"}}/>}
+        {gauge < 0.5  ? <text>Consulter le chef de quart</text>: false}
+
         <text style={styles.ratingmetertext}>{gauge >= 0.7 ? "Risque acceptable" : gauge >= 0.3 ? "Risque Modéré" : "Risque non acceptable" }</text>
-        <text style={{paddingBottom: '60%'}}> {gauge < 0.5 ? "Consulter le chef de quart" : false }</text>
       </div>
     </div>
   );
@@ -157,6 +173,17 @@ const styles = {
     fontSize: '100%',
     fontWeight: 'bold',
     textAlign: 'center',
-    paddingBottom: "10%",
+    paddingBottom: "70%",
   },
+  buttonconfirm: {
+    backgroundColor: 'red',
+    color: 'white',
+    padding: '10px 20px',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    fontSize: '16px',
+    fontWeight: 'bold',
+    margin: '10px'
+},
 };

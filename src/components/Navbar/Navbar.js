@@ -26,15 +26,6 @@ function Navbar () {
         <button type="button" onClick={handleConfirmClick}>
        Admin click me
         </button>
-            <Form inline>
-                <FormControl as="select" value={selectedCity} onChange={handleChange}>
-                    {cities.map((city) => (
-                    <option key={city} value={city}>
-                        {city}
-                    </option>
-                    ))}
-                </FormControl>
-            </Form>
         </div>
         </nav>
   )

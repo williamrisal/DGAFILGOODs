@@ -7,17 +7,29 @@ export default function (props) {
     const [password, setPassword] = useState('');
   
     async function handleSubmit(e) {
-      e.preventDefault();
-      try {
-        const res = await axios.post('/login', {
-          email: email,
-          password: password
-        });
-        console.log(res.data);
-      } catch (err) {
-        console.log(err);
-      }
+      var data = JSON.stringify({
+        "email": email,
+        "password": password
+      });
+      
+      var config = {
+        method: 'post',
+        url: 'http://localhost:8080/login',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+      axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response));
+        
+      })
+      .catch(function (error) {
+        console.log(error);
+      });      
     }
+
   return (
     <div style={styles.mainpage}>
     <div className="Auth-form-container">

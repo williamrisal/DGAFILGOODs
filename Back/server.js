@@ -22,10 +22,9 @@ server.use(cors({
     origin: '*',
   }));
   
-server.get('/listusers', usersCtrl.getUsers);
 server.post('/users', usersCtrl.createUser);
-server.put('/users/:id', usersCtrl.UpdatePassword);
-server.post('/login', usersCtrl.connexionUser);
+server.put('/users/:id', usersCtrl.updateUser);
+server.post('/login', usersCtrl.loginUser);
 
 server.get('/listccer', CCERCtrl.getCCER);
 server.post('/ccer', CCERCtrl.createCCER);

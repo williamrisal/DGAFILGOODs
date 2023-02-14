@@ -1,91 +1,86 @@
-const models = require('../models');
+const User = require('../models').Users;
 
-exports.getUsers = (req, res) => {
-  models.Users.findAll()
-    .then(users => {
-      res.send(users);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving users."
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+
+const secret = process.env.JWT_SECRET;
+
+const userController = {
+  async createUser(req, res) {
+    try {
+      const { email, password } = req.body;      
+      const existingUser = await User.findOne({ where: { email } });
+      if (existingUser) {
+        return res.status(400).json({ msg: 'Utilisateur existant' });
+      }
+
+      const salt = await bcrypt.genSalt(10);
+      const hash = await bcrypt.hash(password, salt);
+
+      const newUser = new User({ email, password: hash });
+      const savedUser = await newUser.save();
+      const token = jwt.sign({ id: savedUser }, secret, {
+        expiresIn: 3600,
       });
-    });
+      res.json({
+        token,
+        user: {
+          id: savedUser._id,
+          email: savedUser.email,
+        },
+      });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  },
+
+  async loginUser(req, res) {
+    try {
+      const { email, password } = req.body;
+      const user = await User.findOne({ email });
+      if (!user) {
+        return res.status(400).json({ msg: 'Utilisateur introuvable' });
+      }
+
+      if (!(password == user.password)) {
+        return res.status(400).json({ msg: 'Mot de passe incorrect' });
+      }
+
+      const token = jwt.sign({ id: user._id }, secret, {
+        expiresIn: 3600,
+      });
+      res.json({
+        token,
+        user: {
+          id: user._id,
+          email: user.email,
+        },
+      });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  },
+
+  async updateUser(req, res) {
+    try {
+      const { email } = req.body;
+      const user = await User.findById(req.user.id);
+      if (!user) {
+        return res.status(400).json({ msg: 'Utilisateur introuvable' });
+      }
+
+      user.email = email;
+      const updatedUser = await user.save();
+      res.json({
+        user: {
+          id: updatedUser._id,
+          email: updatedUser.email,
+        },
+      });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  },
 };
 
-exports.connexionUser = (req, res) => {
-    models.Users.findOne({
-        where: {
-            email: req.body.email,
-            password: req.body.password
-        }
-    })
-    .then(users => {
-        // si l'utilisateur n'existe pas
-        if (!users) {
-            res.send(false);
-        }
-        // si l'utilisateur existe
-        else {
-            res.send(true);
-        }
-    })
-    .catch(err => {
-        res.status(500).send({
-        message:
-            err.message || "Some error occurred while retrieving users."
-        });
-    });
-};
-
-exports.createUser = (req, res) => {
-    // Validate request
-    if (!req.body.username) {
-        res.status(400).send({
-        message: "Content can not be empty!"
-        });
-        return;
-    }
-    
-    // Create a User
-    const user = {
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password,
-    };
-    
-    // Save User in the database
-    models.Users.create(user)
-        .then(data => {
-        res.send(data);
-        })
-        .catch(err => {
-        res.status(500).send({
-            message:
-            err.message || "Some error occurred while creating the User."
-        });
-        });
-    }
-
-    exports.UpdatePassword = (req, res) => {
-        const id = req.params.id;
-        models.Users.update(req.body, {
-            where: { id: id }
-        })
-        .then(num => {
-            if (num == 1) {
-            res.send({
-                message: "User was updated successfully."
-            });
-            } else {
-            res.send({
-                message: `Cannot update User with id=${id}. Maybe User was not found or req.body is empty!`
-            });
-            }
-        })
-        .catch(err => {
-            res.status(500).send({
-            message: "Error updating User with id=" + id
-            });
-        });
-    }
+module.exports = userController;

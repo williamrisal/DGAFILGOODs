@@ -30,7 +30,6 @@ function Question() {
     }
     else if (count > 0){
       localStorage.setItem("count",count == 0 ? 0 : count)
-      localStorage.setItem(QuestionAndAnswer.Formulaire[count].Question, 0)
       setCount(count - 1);
     }
   }
@@ -67,9 +66,8 @@ function Question() {
     return(
       <div className="App-header" >
       <div style={styles.ratingmeter}>
-        <button onClick={showresult}>  Voir resultat </button>
+        <button style={styles.buttonconfirm} onClick={showresult}>  Voir resultat </button>
         <button style={styles.button} onClick={handleBack} >Retour</button>
-
         </div>
         <body className='App-body' style={styles.bodyQuestion}> 
           <ProgressCircu QuestionAndAnswer={QuestionAndAnswer}></ProgressCircu>      
@@ -95,8 +93,19 @@ const styles = {
         height: '-100%',
         padding: '10%,'
   },
+  buttonconfirm: {
+    backgroundColor: '#1e90ff',
+    color: 'white',
+    padding: '10px 20px',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    fontSize: '16px',
+    fontWeight: 'bold',
+    margin: '10px'
+},
   button: {
-      backgroundColor: 'orange',
+      backgroundColor: '#1e90ff',
       color: 'white',
       padding: '10px 20px',
       border: 'none',

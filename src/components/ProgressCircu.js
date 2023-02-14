@@ -2,53 +2,55 @@ import 'react-circular-progressbar/dist/styles.css';
 import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import size from '../data/QuestionAndAnswer.json';
 import logo_stress from '../assets/logo_stress.png';
-
+import { useEffect,useState } from 'react';
 const xMax = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-let progress1 = 0;
-let progress2 = 0;
-let progress3 = 0;
-let progress4 = 0;
-let progress5 = 0;
-let progress6 = 0;
+var progress1 = 0;
+var progress2 = 0;
+var progress3 = 0;
+var progress4 = 0;
+var progress5 = 0;
+var progress6 = 0;
 
-var couleur1 = 'black';
 
+
+console.log("progress2", progress2)
 function ProgressCircu(QuestionAndAnswer) {
     let testa = localStorage.getItem("count") != null ? localStorage.getItem("count") : 0;
     let Answer =  Number(localStorage.getItem(QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question))
-            if (QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question != null){
-                switch (QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question) {
-                    case "Sommeil dans les dernières 24h ?"
-                        :progress1 = Number(Math.round(((Answer) / (size.Formulaire[testa].Answer.length - 1)) * 100));
-                        console.log("progress1", progress1)
-                        console.log(Answer + "/ " + (size.Formulaire[testa].Answer.length - 1))
-                        break;
-                    case "Fatigue"
-                        :progress2 = Math.round(((Answer) / (size.Formulaire[testa].Answer.length - 1)) * 100);
-                        console.log(Answer + "/ " + (size.Formulaire[testa].Answer.length - 1))
-                        break;
+    console.log("testa", testa, "Answer" , Answer)
+    let ok = false;
+        if (QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question != null){
+            switch (QuestionAndAnswer.QuestionAndAnswer.Formulaire[testa].Question) {
+                case "Sommeil dans les dernières 24h ?"
+                    :progress1 = 100;
+                    console.log("progress1", progress1)
+                    console.log(Answer + "/ " + (size.Formulaire[testa].Answer.length - 1))
+                    break;
+                case "Fatigue"
+                    :progress2 = Math.round(((Answer) / (size.Formulaire[testa].Answer.length - 1)) * 100);
+                    console.log(Answer + "/ " + (size.Formulaire[testa].Answer.length - 1))
+                    break;
 
-                    case "Pression ressentie (complexité,experience, enjeu, expertise, relation...)"
-                        :progress3 = Math.round((Answer / 6) * 100);
-                        console.log(Answer + "/ " + 6)
-                        localStorage.setItem("tmp", 0)
-                        break;
-                    case "Médicament, Alcool.."
-                        :progress4 = Math.round((Answer / (size.Formulaire[testa].Answer.length - 1)) * 100);
-                        console.log(Answer + "/ " + (size.Formulaire[testa].Answer.length - 1))
-                        break;
-                    case "Horaire d'activité"
-                        :progress5 = Math.round((Answer / (size.Formulaire[testa].Answer.length - 1)) * 100);
-                        console.log(Answer + "/ " + (size.Formulaire[testa].Answer.length - 1))
-                        break;
-                    case "Etat"
-                        :progress6 = Math.round((Answer / (size.Formulaire[testa].Answer.length - 1)) * 100);
-                        console.log(Answer + "/ " + (size.Formulaire[testa].Answer.length - 1))
-                        break;
-                    default:
-                        break;
-                }
+                case "Pression ressentie (complexité,experience, enjeu, expertise, relation...)"
+                    :progress3 = Math.round((Answer / 6) * 100);
+                    console.log(Answer + "/ " + 6)
+                    localStorage.setItem("tmp", 0)
+                    break;
+                case "Médicament, Alcool.."
+                    :progress4 = Math.round((Answer / (size.Formulaire[testa].Answer.length - 1)) * 100);
+                    console.log(Answer + "/ " + (size.Formulaire[testa].Answer.length - 1))
+                    break;
+                case "Horaire d'activité"
+                    :progress5 = Math.round((Answer / (size.Formulaire[testa].Answer.length - 1)) * 100);
+                    console.log(Answer + "/ " + (size.Formulaire[testa].Answer.length - 1))
+                    break;
+                case "Etat"
+                    :progress6 = Math.round((Answer / (size.Formulaire[testa].Answer.length - 1)) * 100);
+                    ok = true;
+                    console.log(Answer + "/ " + (size.Formulaire[testa].Answer.length - 1))
+                    break;
+            }
            }
     
     return (
@@ -65,46 +67,46 @@ function ProgressCircu(QuestionAndAnswer) {
                     </div>
 
                     <div style={styles.spaceElement}>
-                    <CircularProgressbarWithChildren value={progress2} styles={progress2 > 0 && progress2 <= 33 ? styles.red : progress2 > 33 && progress2 <= 66 ? styles.yellow : styles.green}>
+                    <CircularProgressbarWithChildren value={testa >= 1 ? 100 : 0} styles={progress2 > 0 && progress2 <= 33 ? styles.green : progress2 > 33 && progress2 <= 66 ? styles.yellow : styles.red}>
                     <div style={{ fontSize: '100%', paddingBottom: 5 }}>😴</div>
                         <div style={{ fontSize: '40%', marginTop: -5 }}>
-                            <strong>{progress2}%</strong> Fatigue
+                            <strong>{testa >= 1 ? 100 : 0}%</strong> Fatigue
                         </div>
                     </CircularProgressbarWithChildren>
                     </div>
 
                     <div style={styles.spaceElement}>
-                    <CircularProgressbarWithChildren value={progress3} styles={progress3 > 0 && progress3 <= 33 ? styles.green : progress3 > 33 && progress3 <= 66 ? styles.yellow : styles.red}>
+                    <CircularProgressbarWithChildren value={testa == 2 ? 33 : testa == 3 ? 66 : testa >= 4 ? 100 : 0} styles={progress3 > 0 && progress3 <= 33 ? styles.red : progress3 > 33 && progress3 <= 66 ? styles.yellow : styles.green}>
                     <img style={{ width: '40%', marginTop: -5}} src={logo_stress} alt="doge" />
                         <div style={{ fontSize: '40%', marginTop: -5 , marginLeft: 10}}>
-                            <strong>{progress3}%</strong> Etat psycologique
+                            <strong>{testa == 2 ? 33 : testa == 3 ? 66 : testa >= 4 ? 100 : 0}%</strong> Etat psycologique
                         </div>
                     </CircularProgressbarWithChildren>
                     </div>
                     
                     <div style={styles.spaceElement}>
-                    <CircularProgressbarWithChildren value={progress4} styles={progress4 > 0 && progress4 <= 33 ? styles.green : progress4 > 33 && progress4 <= 66 ? styles.yellow : styles.red}>
+                    <CircularProgressbarWithChildren value={testa >= 5 ? 100 : 0} styles={progress4 > 0 && progress4 <= 33 ? styles.green : progress4 > 33 && progress4 <= 66 ? styles.yellow : styles.red}>
                     <div style={{ fontSize: '100%', paddingBottom: 5 }}>💊</div>
                         <div style={{ fontSize: '40%', marginTop: -5 , marginLeft: 10}}>
-                            <strong>{progress4}%</strong> Medicament, Alcool..
+                            <strong>{testa >= 5 ? 100 : 0}%</strong> Medicament, Alcool..
                         </div>
                     </CircularProgressbarWithChildren>
                     </div>
                     <div style={styles.spaceElement}>
 
-                    <CircularProgressbarWithChildren value={progress5} styles={progress5 > 0 && progress5 <= 33 ? styles.red : progress5 > 33 && progress5 <= 66 ? styles.yellow : styles.green}>
+                    <CircularProgressbarWithChildren value={testa >= 6 ? 100 : 0} styles={progress5 > 0 && progress5 <= 33 ? styles.red : progress5 > 33 && progress5 <= 66 ? styles.yellow : styles.green}>
                     <div style={{ fontSize: '100%', paddingBottom: 5 }}>🕦🧑‍💻 </div>
                         <div style={{ fontSize: '40%', marginTop: -5 , marginLeft: 10}}>
-                            <strong>{progress5}%</strong> Horaire d'activité
+                            <strong>{testa >= 6 ? 100 : 0}%</strong> Horaire d'activité
                         </div>
                     </CircularProgressbarWithChildren>
                     </div>
                     <div style={styles.spaceElement}>
                         
-                    <CircularProgressbarWithChildren value={progress6} styles={progress6 > 0 && progress6 <= 33 ? styles.red : progress6 > 33 && progress6 <= 66 ? styles.yellow : styles.green}>
+                    <CircularProgressbarWithChildren value={testa >= 7 ? 100 : 0} styles={progress6 > 0 && progress6 <= 33 ? styles.red : progress6 > 33 && progress6 <= 66 ? styles.yellow : styles.green}>
                     <div style={{ fontSize: '100%', paddingBottom: 5 }}>🤒</div>
                         <div style={{ fontSize: '40%', marginTop: -5 }}>
-                            <strong>{progress6}%</strong> ETAT
+                            <strong>{testa >= 7 ? 100 : 0}%</strong> ETAT
                         </div>
                     </CircularProgressbarWithChildren>
                     </div>
