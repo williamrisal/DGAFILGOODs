@@ -14,36 +14,36 @@ function ProgressCircu({ QuestionAndAnswer, Count , Progress}) {
     if (testa < 8 && QuestionAndAnswer.Formulaire[testa].Question) {
         switch (QuestionAndAnswer.Formulaire[testa].Question) {
             case "Sommeil dans les dernières 24h ?" :
-                Progress[0] = ({res: Math.round(((Answer) / (size.Formulaire[testa].Answer.length - 1)) * 100)});
+                Progress[0].sp1(Math.round(((Answer) / (size.Formulaire[testa].Answer.length - 1)) * 100));
                 break;
             case "Fatigue" :
-                Progress[1] = ({res: Math.round(((Answer) / (size.Formulaire[testa].Answer.length - 1)) * 100)});
+                Progress[1].sp2(Math.round(((Answer) / (size.Formulaire[testa].Answer.length - 1)) * 100));
                 break;
             case "Pression ressentie (complexité,experience, enjeu, expertise, relation...)" :
-                Progress[2] = ({res: Math.round((Answer / 6) * 100)});
+                Progress[2].sp3(Math.round(((Answer) / (size.Formulaire[testa].Answer.length - 1)) * 100));
                 localStorage.setItem("tmp", 0)
                 break;
             case "Médicament, Alcool.." :
-                Progress[3] = ({res: Math.round((Answer / (size.Formulaire[testa].Answer.length - 1)) * 100)});
+                Progress[3].sp4(Math.round(((Answer) / (size.Formulaire[testa].Answer.length - 1)) * 100));
                 break;
             case "Horaire d'activité" :
-                Progress[4] = ({res: Math.round((Answer / (size.Formulaire[testa].Answer.length - 1)) * 100)});
+                Progress[4].sp5(Math.round(((Answer) / (size.Formulaire[testa].Answer.length - 1)) * 100));
                 break;
             case "Etat" :
-                Progress[5] = ({res: Math.round((Answer / (size.Formulaire[testa].Answer.length - 1)) * 100)});
+                Progress[5].sp6(Math.round(((Answer) / (size.Formulaire[testa].Answer.length - 1)) * 100));
                 break;
             default:
                 break;
         }
     }
-    console.log(Progress);
+    console.log(Progress)
     return (
         <body>
             <div style={{width: '80%'}}>
                 <div style={styles.contain}>
 
                     <div style={styles.spaceElement}>
-                        <CircularProgressbarWithChildren value={testa > 0 ? 100 : 0} styles={Progress[0].res >= 0 && Progress[0].res < 33 ? styles.green : Progress[0].res >= 33 && Progress[0].res < 66 ? styles.yellow : styles.red}>
+                        <CircularProgressbarWithChildren value={testa > 0 ? 100 : 0} styles={Progress[0].p1 >= 0 && Progress[0].p1 < 33 ? styles.green : Progress[0].p1 >= 33 && Progress[0].p1 < 66 ? styles.yellow : styles.red}>
                             <div style={{ fontSize: '100%', paddingBottom: 5 }}>🛌</div>
                             <div style={{ fontSize: '40%', marginTop: -5 }}>
                                 <strong>{testa > 0 ? 100 : 0}%</strong>  Sommeil
@@ -52,7 +52,7 @@ function ProgressCircu({ QuestionAndAnswer, Count , Progress}) {
                     </div>
 
                     <div style={styles.spaceElement}>
-                        <CircularProgressbarWithChildren value={testa >= 2 ? 100 : 0} styles={Progress[1].res >= 0 && Progress[1].res < 33 ? styles.green : Progress[1].res >= 33 && Progress[1].res < 66 ? styles.yellow : styles.red}>
+                        <CircularProgressbarWithChildren value={testa >= 2 ? 100 : 0} styles={Progress[1].p2 >= 0 && Progress[1].p2 < 33 ? styles.green : Progress[1].p2 >= 33 && Progress[1].p2 < 66 ? styles.yellow : styles.red}>
                             <div style={{ fontSize: '100%', paddingBottom: 5 }}>😴</div>
                             <div style={{ fontSize: '40%', marginTop: -5 }}>
                                 <strong>{testa >= 2 ? 100 : 0}%</strong> Fatigue
@@ -61,7 +61,7 @@ function ProgressCircu({ QuestionAndAnswer, Count , Progress}) {
                     </div>
 
                     <div style={styles.spaceElement}>
-                        <CircularProgressbarWithChildren value={testa === 3 ? 33 : testa === 4 ? 66 : testa >= 5 ? 100 : 0} styles={Progress[2].res >= 0 && Progress[2].res < 33 ? styles.green : Progress[2].res >= 33 && Progress[2].res < 66 ? styles.yellow : styles.red}>
+                        <CircularProgressbarWithChildren value={testa === 3 ? 33 : testa === 4 ? 66 : testa >= 5 ? 100 : 0} styles={Progress[2].p3 >= 0 && Progress[2].p3 < 33 ? styles.green : Progress[2].p3 >= 33 && Progress[2].p3 < 66 ? styles.yellow : styles.red}>
                             <img style={{ width: '40%', marginTop: -5}} src={logo_stress} alt="doge" />
                             <div style={{ fontSize: '40%', marginTop: -5 , marginLeft: 10}}>
                                 <strong>{testa === 3 ? 33 : testa === 4 ? 66 : testa >= 5 ? 100 : 0}%</strong> Etat psycologique
@@ -70,7 +70,7 @@ function ProgressCircu({ QuestionAndAnswer, Count , Progress}) {
                     </div>
                     
                     <div style={styles.spaceElement}>
-                        <CircularProgressbarWithChildren value={testa >= 6 ? 100 : 0} styles={Progress[3].res >= 0 && Progress[3].res < 33 ? styles.green : Progress[3].res >= 33 && Progress[3].res < 66 ? styles.yellow : styles.red}>
+                        <CircularProgressbarWithChildren value={testa >= 6 ? 100 : 0} styles={Progress[3].p4 >= 0 && Progress[3].p4 < 33 ? styles.green : Progress[3].p4 >= 33 && Progress[3].p4 < 66 ? styles.yellow : styles.red}>
                             <div style={{ fontSize: '100%', paddingBottom: 5 }}>💊</div>
                             <div style={{ fontSize: '40%', marginTop: -5 , marginLeft: 10}}>
                                 <strong>{testa >= 6 ? 100 : 0}%</strong> Medicament, Alcool..
@@ -79,7 +79,7 @@ function ProgressCircu({ QuestionAndAnswer, Count , Progress}) {
                     </div>
 
                     <div style={styles.spaceElement}>
-                        <CircularProgressbarWithChildren value={testa >= 7 ? 100 : 0} styles={Progress[4].res >= 0 && Progress[4].res < 33 ? styles.green : Progress[4].res >= 33 && Progress[4].res < 66 ? styles.yellow : styles.red}>
+                        <CircularProgressbarWithChildren value={testa >= 7 ? 100 : 0} styles={Progress[4].p5 >= 0 && Progress[4].p5 < 33 ? styles.green : Progress[4].p5 >= 33 && Progress[4].p5 < 66 ? styles.yellow : styles.red}>
                             <div style={{ fontSize: '100%', paddingBottom: 5 }}>🕦🧑‍💻 </div>
                             <div style={{ fontSize: '40%', marginTop: -5 , marginLeft: 10}}>
                                 <strong>{testa >= 7 ? 100 : 0}%</strong> Horaire d'activité
@@ -88,7 +88,7 @@ function ProgressCircu({ QuestionAndAnswer, Count , Progress}) {
                     </div>
 
                     <div style={styles.spaceElement}>
-                        <CircularProgressbarWithChildren value={testa >= 8 ? 100 : 0} styles={Progress[5].res >= 0 && Progress[5].res < 33 ? styles.green : Progress[5].res >= 33 && Progress[5].res < 66 ? styles.yellow : styles.red}>
+                        <CircularProgressbarWithChildren value={testa >= 8 ? 100 : 0} styles={Progress[5].p6 >= 0 && Progress[5].p6 < 33 ? styles.green : Progress[5].p6 >= 33 && Progress[5].p6 < 66 ? styles.yellow : styles.red}>
                             <div style={{ fontSize: '100%', paddingBottom: 5 }}>🤒</div>
                             <div style={{ fontSize: '40%', marginTop: -5 }}>
                                 <strong>{testa >= 8 ? 100 : 0}%</strong> ETAT

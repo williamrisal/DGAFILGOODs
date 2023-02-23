@@ -7,9 +7,21 @@ import ProgressCircu from './ProgressCircu';
 import ProgressBar from './progress-bar/progress-bar';
 
 function Question() {
-  const [count, setCount] = useState(0);
-  const [progress, setProgress] = useState([{res: 0}, {res: 0}, {res: 0}, {res: 0}, {res: 0}, {res: 0}]); 
-  const navigate = useNavigate();
+    const [count, setCount] = useState(0);
+    const [progress1, setProgress1] = useState(0); 
+    const [progress2, setProgress2] = useState(0); 
+    const [progress3, setProgress3] = useState(0); 
+    const [progress4, setProgress4] = useState(0); 
+    const [progress5, setProgress5] = useState(0); 
+    const [progress6, setProgress6] = useState(0);
+    const Progress = [{p1: progress1, sp1: setProgress1},
+                      {p2: progress2, sp2: setProgress2},
+                      {p3: progress3, sp3: setProgress3},
+                      {p4: progress4, sp4: setProgress4},
+                      {p5: progress5, sp5: setProgress5},
+                      {p6: progress6, sp6: setProgress6}];
+
+    const navigate = useNavigate();
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -21,7 +33,7 @@ function Question() {
 
     function handleBack(e) {
         e.preventDefault();
-        if (count > 0){
+        if (count > 0) {
             QuestionAndAnswer.Formulaire[count].Question = null
             setCount(count - 1);
             localStorage.setItem("count", count);
@@ -45,7 +57,7 @@ function Question() {
                         </div>
                     </div>
                     <br/><br/><br/>
-                    <ProgressCircu QuestionAndAnswer={QuestionAndAnswer} Count={count} Progress={progress} />
+                    <ProgressCircu QuestionAndAnswer={QuestionAndAnswer} Count={count} Progress={Progress} />
                 </body>
             </div>
         );
@@ -57,7 +69,7 @@ function Question() {
                     <button style={styles.button} onClick={(handleBack)} >Retour</button>
                 </div>
                 <body className='App-body' style={styles.bodyQuestion} > 
-                    <ProgressCircu QuestionAndAnswer={QuestionAndAnswer} Count={count} Progress={progress} />   
+                    <ProgressCircu QuestionAndAnswer={QuestionAndAnswer} Count={count} Progress={Progress} />   
                 </body>
             </div>
         );
