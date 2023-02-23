@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from '../../assets/Ministère_des_Armées.svg-3.png' // import image
+import logo from '../../assets/LOGO_CER.JPG' // import image
 import { Form, FormControl} from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 
@@ -14,7 +14,7 @@ function Navbar () {
     }
 
     function handleConfirmClick() {
-        navigate("/login"); 
+        navigate("/FILGOODS/login"); 
       }
     
   return (

@@ -13,7 +13,7 @@ function MainPage() {
     localStorage.setItem('city', null);
     localStorage.clear();
     localStorage.setItem('city', selectedCity);
-    navigate("/Question");
+    navigate("/FILGOODS/Question");
     
   }
   // useEffect(() => {

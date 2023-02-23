@@ -1,17 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.3ddc59ea.css",
-    "main.js": "/static/js/main.ba982868.js",
-    "static/js/787.2fb03591.chunk.js": "/static/js/787.2fb03591.chunk.js",
-    "static/media/Ministère_des_Armées.svg-3.png": "/static/media/Ministère_des_Armées.svg-3.4d47a7aea24ae969f9bd.png",
-    "static/media/logo_stress.png": "/static/media/logo_stress.38f243780c624da2f450.png",
-    "index.html": "/index.html",
-    "main.3ddc59ea.css.map": "/static/css/main.3ddc59ea.css.map",
-    "main.ba982868.js.map": "/static/js/main.ba982868.js.map",
-    "787.2fb03591.chunk.js.map": "/static/js/787.2fb03591.chunk.js.map"
+    "main.css": "/FILGOODS/static/css/main.7da65ff9.css",
+    "main.js": "/FILGOODS/static/js/main.9679019f.js",
+    "static/js/787.2fb03591.chunk.js": "/FILGOODS/static/js/787.2fb03591.chunk.js",
+    "static/media/LOGO_CER.JPG": "/FILGOODS/static/media/LOGO_CER.f3c28ab6292bf4daad31.JPG",
+    "static/media/logo_stress.png": "/FILGOODS/static/media/logo_stress.38f243780c624da2f450.png",
+    "static/media/smileyVert.png": "/FILGOODS/static/media/smileyVert.d28db5d133ac7863a494.png",
+    "static/media/smileyJaune.png": "/FILGOODS/static/media/smileyJaune.46eb3f835c95ff666ecd.png",
+    "index.html": "/FILGOODS/index.html",
+    "main.7da65ff9.css.map": "/FILGOODS/static/css/main.7da65ff9.css.map",
+    "main.9679019f.js.map": "/FILGOODS/static/js/main.9679019f.js.map",
+    "787.2fb03591.chunk.js.map": "/FILGOODS/static/js/787.2fb03591.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3ddc59ea.css",
-    "static/js/main.ba982868.js"
+    "static/css/main.7da65ff9.css",
+    "static/js/main.9679019f.js"
   ]
 }

@@ -20,7 +20,7 @@ export default function App() {
   const returnhome = () => {
     //nettoyer tout le cach
     //retourner a la page d'accueil
-    window.location.href='http://localhost:3000'
+    window.location.href='https://www.iftl-ev.fr/'
   }
 
   const senddata = (listAnswer) => {
@@ -107,6 +107,7 @@ export default function App() {
     const newArray = firstPart.concat(lastPart);
 
     newArray[2] = moyenquestionpsyco;
+    console.log(newArray, "newArray")
     newArray.forEach(nombre => {
         if (nombre === 0){
             check++;
@@ -120,7 +121,7 @@ export default function App() {
       });
 
     moyennbr = somme / newArray.length;
-    senddata(newArray);
+    //senddata(newArray);
     setGauge(0.999999 - moyennbr);
   };
 

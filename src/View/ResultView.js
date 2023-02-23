@@ -12,7 +12,7 @@ function Question() {
         <RatingMeter></RatingMeter>
         </div>
         <body className='App-body' style={styles.bodyQuestion}> 
-          <ProgressCircu QuestionAndAnswer={QuestionAndAnswer}></ProgressCircu>      
+          {/* <ProgressCircu QuestionAndAnswer={QuestionAndAnswer}></ProgressCircu>       */}
         </body>
       </div>
    )

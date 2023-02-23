@@ -15,26 +15,25 @@ function Question() {
     e.preventDefault();
 
     if (count < QuestionAndAnswer.Formulaire.length){
-      localStorage.setItem("count",count == null ? 0 : count)
       setCount(count + 1);
+      localStorage.setItem("count",count == null ? 0 : count)
     }
     
   }
   function showresult(){
-    navigate('/result');
+    navigate('/FILGOODS/result');
   }
   function handleBack(e){
     e.preventDefault();
-    if (count >= QuestionAndAnswer.Formulaire.length){
+   if (count > 0){
+      QuestionAndAnswer.Formulaire[count].Question = null
       setCount(count - 1);
-    }
-    else if (count > 0){
-      localStorage.setItem("count",count == 0 ? 0 : count)
-      setCount(count - 1);
+      localStorage.setItem("count", count)
+      console.log("aaaa",QuestionAndAnswer.Formulaire[count].Question)
     }
   }
   if (count < QuestionAndAnswer.Formulaire.length){
-    console.log("count",count);
+    console.log("count",count, "taille", QuestionAndAnswer.Formulaire.length);
     return (
       <div className="App-header" >
         <text>{QuestionAndAnswer.Formulaire[count].Question}</text>
@@ -56,7 +55,7 @@ function Question() {
           <br/>
           <br/>
           <br/>
-          <ProgressCircu QuestionAndAnswer={QuestionAndAnswer}></ProgressCircu>      
+          <ProgressCircu QuestionAndAnswer={QuestionAndAnswer} Count={count} ></ProgressCircu>      
         </body>
       </div>
     );
@@ -66,11 +65,11 @@ function Question() {
     return(
       <div className="App-header" >
       <div style={styles.ratingmeter}>
-        <button style={styles.buttonconfirm} onClick={showresult}>  Voir resultat </button>
+        <button style={styles.buttonconfirm} onClick={showresult}>Voir resultat </button>
         <button style={styles.button} onClick={handleBack} >Retour</button>
         </div>
         <body className='App-body' style={styles.bodyQuestion}> 
-          <ProgressCircu QuestionAndAnswer={QuestionAndAnswer}></ProgressCircu>      
+          <ProgressCircu QuestionAndAnswer={QuestionAndAnswer} Count={count}  ></ProgressCircu>      
         </body>
       </div>
    )

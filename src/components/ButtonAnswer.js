@@ -19,6 +19,7 @@ function ButtonAnswer(QuestionAndAnswer) {
                     }
                 }
                 else {
+                    console.log("Question Button", QuestionAndAnswer.QuestionAndAnswer.Question, "reponse", b)
                     localStorage.setItem(QuestionAndAnswer.QuestionAndAnswer.Question, b)
                 }
             }

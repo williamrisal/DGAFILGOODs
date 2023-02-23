@@ -6,7 +6,7 @@
                 "Bien dormi(>8h)",
                 "Moyen(6-8h)",
                 "Peu dormi(4-6h)",
-                "Trés peu dormi(<4h)"
+                "Très peu dormi(<4h)"
 
             ]
         },
@@ -56,7 +56,7 @@
         {
             "Question": "Horaire d'activité",
             "Answer": [
-                "avant 06H00 ou après 20H00",
+                "Avant 06H00 ou après 20H00",
                 "8h-16h",
                 "16h-20h ou 6H00-8H00"
 
@@ -65,7 +65,7 @@
         {
             "Question": "Etat",
             "Answer": [
-                "en bonne forme",
+                "En bonne forme",
                 "Moyen forme ou infection légère",
                 "Etat fébrile"
 
