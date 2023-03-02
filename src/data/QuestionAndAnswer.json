@@ -48,9 +48,7 @@
             "Question": "Médicament, Alcool..",
             "Answer": [
                 "Aucun",
-                "Médicament",
-                "Alcool",
-                "Drogue"
+                "Médicament-Alcool-Drogue"
             ]
         },
         {

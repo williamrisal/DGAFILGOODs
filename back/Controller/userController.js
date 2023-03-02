@@ -13,22 +13,16 @@ const userController = {
       if (existingUser) {
         return res.status(400).json({ msg: 'Utilisateur existant' });
       }
-
-      const salt = await bcrypt.genSalt(10);
-      const hash = await bcrypt.hash(password, salt);
-
-      const newUser = new User({ email, password: hash });
-      const savedUser = await newUser.save();
-      const token = jwt.sign({ id: savedUser }, secret, {
-        expiresIn: 3600,
-      });
-      res.json({
-        token,
-        user: {
-          id: savedUser._id,
-          email: savedUser.email,
-        },
-      });
+      else{
+        //create user  avec modepasse crypter sans token jwt
+        const salt = await bcrypt.genSalt();
+        const passwordHash = await bcrypt.hash(password, salt);
+        const user = await User.create({
+          email,
+          password: passwordHash,
+        });
+        res.status(201).json({ msg: 'Utilisateur créé' });
+      }
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
@@ -37,29 +31,26 @@ const userController = {
   async loginUser(req, res) {
     try {
       const { email, password } = req.body;
-      const user = await User.findOne({ email });
+      console.log(email, password)
+      const user = await User.findOne({ where: { email } });
       if (!user) {
         return res.status(400).json({ msg: 'Utilisateur introuvable' });
       }
+      else {
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+          return res.status(400).json({ msg: 'Mot de passe incorrect' });
+        }
+        else {
+          return res.status(200).json({ msg: 'connecté' });
 
-      if (!(password == user.password)) {
-        return res.status(400).json({ msg: 'Mot de passe incorrect' });
       }
-
-      const token = jwt.sign({ id: user._id }, secret, {
-        expiresIn: 3600,
-      });
-      res.json({
-        token,
-        user: {
-          id: user._id,
-          email: user.email,
-        },
-      });
+    }
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
   },
+  
 
   async updateUser(req, res) {
     try {

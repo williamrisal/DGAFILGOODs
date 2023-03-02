@@ -27,6 +27,7 @@ server.put('/users/:id', usersCtrl.updateUser);
 server.post('/login', usersCtrl.loginUser);
 
 server.get('/listccer', CCERCtrl.getCCER);
+server.get('/ccercity/:city', CCERCtrl.getCCERbycity);
 server.post('/ccer', CCERCtrl.createCCER);
 server.put('/ccer/:id', CCERCtrl.Updatestats);
 

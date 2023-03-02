@@ -12,6 +12,20 @@ exports.getCCER = (req, res) => {
         });
         });
     }
+
+exports.getCCERbycity = (req, res) => {
+    const location = req.params.city;
+    models.CCER.findAll({ where: { location: location } })
+        .then(CCER => {
+            res.send(CCER);
+        })
+        .catch(err => {
+            res.status(500).send({
+            message:
+            err.message || "Some error occurred while retrieving CCER."
+             });
+        });
+    }
 exports.createCCER = (req, res) => {
     // Validate request
     console.log(req.body);

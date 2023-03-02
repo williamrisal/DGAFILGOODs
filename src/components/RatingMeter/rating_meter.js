@@ -162,6 +162,7 @@ export default function App() {
         {gauge > 0.7 ? <img src={smileyvert} alt="smileyvert" style={{width: '20%', height: '70%' , margin: "1%"}}/> : gauge > 0.3 ? <img src={smileyjaune} alt="smileyjaune" style={{width: '20%', height: '70%' , margin: "1%"}}/> : <img src={smileyrouge} alt="smileyrouge" style={{width: '20%', height: '70%' , margin: "1%"}}/>}
         {gauge < 0.5  ? <text>Consulter le chef de quart</text>: false}
 
+
         <text style={styles.ratingmetertext}>{gauge >= 0.7 ? "Risque acceptable" : gauge >= 0.3 ? "Risque Modéré" : "Risque non acceptable" }</text>
       </div>
     </div>
