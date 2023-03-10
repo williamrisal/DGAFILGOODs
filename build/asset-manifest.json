@@ -1,19 +1,21 @@
 {
   "files": {
-    "main.css": "/FILGOODS/static/css/main.7da65ff9.css",
-    "main.js": "/FILGOODS/static/js/main.1226daa6.js",
+    "main.css": "/FILGOODS/static/css/main.0613a20d.css",
+    "main.js": "/FILGOODS/static/js/main.9887829a.js",
     "static/js/787.2fb03591.chunk.js": "/FILGOODS/static/js/787.2fb03591.chunk.js",
+    "static/media/patch_IFTL_vf.png": "/FILGOODS/static/media/patch_IFTL_vf.7d8622f936fd1c91a453.png",
     "static/media/LOGO_CER.JPG": "/FILGOODS/static/media/LOGO_CER.f3c28ab6292bf4daad31.JPG",
     "static/media/logo_stress.png": "/FILGOODS/static/media/logo_stress.38f243780c624da2f450.png",
     "static/media/smileyVert.png": "/FILGOODS/static/media/smileyVert.d28db5d133ac7863a494.png",
     "static/media/smileyJaune.png": "/FILGOODS/static/media/smileyJaune.46eb3f835c95ff666ecd.png",
+    "static/media/FildGOOD-2.png": "/FILGOODS/static/media/FildGOOD-2.b2e968320d87a744d3f6.png",
     "index.html": "/FILGOODS/index.html",
-    "main.7da65ff9.css.map": "/FILGOODS/static/css/main.7da65ff9.css.map",
-    "main.1226daa6.js.map": "/FILGOODS/static/js/main.1226daa6.js.map",
+    "main.0613a20d.css.map": "/FILGOODS/static/css/main.0613a20d.css.map",
+    "main.9887829a.js.map": "/FILGOODS/static/js/main.9887829a.js.map",
     "787.2fb03591.chunk.js.map": "/FILGOODS/static/js/787.2fb03591.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7da65ff9.css",
-    "static/js/main.1226daa6.js"
+    "static/css/main.0613a20d.css",
+    "static/js/main.9887829a.js"
   ]
 }

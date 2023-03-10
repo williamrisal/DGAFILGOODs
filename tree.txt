@@ -1,0 +1,72 @@
+.
+├── README.md
+├── back
+│   ├── Controller
+│   │   ├── CCERController.js
+│   │   └── userController.js
+│   ├── config
+│   │   └── config.json
+│   ├── migrations
+│   │   ├── 20230112122937-create-user.js
+│   │   └── 20230112124455-create-CCER.js
+│   ├── models
+│   │   ├── CCER.js
+│   │   ├── index.js
+│   │   └── user.js
+│   ├── seeders
+│   └── server.js
+├── package-lock.json
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+├── src
+│   ├── App.css
+│   ├── App.js
+│   ├── App.test.js
+│   ├── Parsing
+│   │   └── ParsingData.js
+│   ├── View
+│   │   ├── GraphView.js
+│   │   ├── LoginView.js
+│   │   ├── Loginstyle.css
+│   │   ├── MainPage.js
+│   │   ├── Questionview.js
+│   │   └── ResultView.js
+│   ├── assets
+│   │   ├── FildGOOD-2.png
+│   │   ├── LOGO_CER.JPG
+│   │   ├── logo_stress.png
+│   │   ├── patch_IFTL_vf.png
+│   │   ├── smileyBleu.png
+│   │   ├── smileyCian.png
+│   │   ├── smileyJaune.png
+│   │   └── smileyVert.png
+│   ├── components
+│   │   ├── ButtonAnswer.js
+│   │   ├── Navbar
+│   │   │   ├── Navbar.css
+│   │   │   └── Navbar.js
+│   │   ├── Notif
+│   │   │   ├── Notif.css
+│   │   │   └── Notif.js
+│   │   ├── ProgressCircu.js
+│   │   ├── Question.js
+│   │   ├── RatingMeter
+│   │   │   ├── rating_meter.js
+│   │   │   └── styles.css
+│   │   └── progress-bar
+│   │       ├── progress-bar.css
+│   │       └── progress-bar.js
+│   ├── data
+│   │   └── QuestionAndAnswer.json
+│   ├── index.css
+│   ├── index.js
+│   ├── logo.svg
+│   ├── reportWebVitals.js
+│   └── setupTests.js
+└── tree.txt
+
+18 directories, 52 files

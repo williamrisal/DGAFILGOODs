@@ -9,6 +9,10 @@ function Question() {
   //increment the count to display the next question
   const [count, setCount] = useState(0);
   const navigate = useNavigate();
+
+  function nextQuestion() {
+    localStorage.setItem(QuestionAndAnswer.Formulaire[5].Question, 99)
+  }
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -41,7 +45,7 @@ function Question() {
             <div style={styles.divcenter} >
               <form onSubmit={handleSubmit} >
                 <ButtonAnswer QuestionAndAnswer={QuestionAndAnswer.Formulaire[count]}></ButtonAnswer>
-                {count === 5 ? <button style={styles.button} >Je ne souhaite pas répondre </button> : false}
+                {count === 5 ? <button style={styles.button}  onClick={nextQuestion}>Je ne souhaite pas répondre </button> : false}
                 <button style={styles.button} onClick={handleBack} >Retour</button>
 
               </form>

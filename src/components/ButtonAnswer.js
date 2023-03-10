@@ -35,8 +35,11 @@ function ButtonAnswer(QuestionAndAnswer) {
                     itemColor = 'green';
                 } else if (index === QuestionAndAnswer.QuestionAndAnswer.Answer.length - 1) {
                     itemColor = 'red';
-                } else {
+                } else  if (index === QuestionAndAnswer.QuestionAndAnswer.Answer.length - 2){
                     itemColor = 'orange';
+                }
+                else {
+                    itemColor = 'yellow';
                 }
                 return (
                     <ListGroup.Item style={{ ...styles.button, backgroundColor: itemColor }} action onClick={() => handleSubmit(reponse)} variant="primary">
